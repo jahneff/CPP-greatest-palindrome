@@ -11,37 +11,35 @@ int get_length(int r) {
 	return length;
 }
 
-bool check_if_palindrome(int s){
-	std::cout << s << std::endl;
-	int t = get_length(s);
-	int fwd[t];
-	int bwd[t];
-	for(int k = 0; k < t; k++){ 
-		fwd[k] = s % 10;
-		bwd[(t-k-1)] = s % 10;
-		s /= 10;
-	};
-	for(int l = 0; l < t; l++){ 
+int check_if_palindrome(int original){
+	int modified = original;		//preserve s, which will be modified
+	int length = get_length(original);		
+	int fwd[length];
+	int bwd[length];
+	for(int k = 0; k < length; k++){ 
+		fwd[k] = modified % 10;
+		bwd[(length-k-1)] = modified % 10;
+		modified /= 10;
+	}
+	for(int l = 0; l < length; l++){ 
 		if (fwd[l] != bwd[l]){
-			return false;		
+			return 0;		
 		}
 	}
-	std::cout << "PALINDROME: " << std::endl; 
-	for(int m = 0; m < t; m++){
-		std::cout << fwd[m]; 
-	} 
-	std::cout << std::endl;
-	return true;
+	return original;
 } 
 
 int main(int argc, char* argv[]){
-	int a, b, c;
-	std::cin >> a >> b;
-	c = get_length(a); 
-	for (int i = pow(10, c-1); i <= pow(10, c)-1; i++){
+	int input_a, input_b, length_of_a, product_d;
+	std::cin >> input_a >> input_b;
+	length_of_a = get_length(input_a); 
+	for (int i = pow(10, (length_of_a - 1)); i <= pow(10, length_of_a)-1; i++){
 		for (int j = 0; j <= i; j++){
- 			std::cout << i << " " << j << ": " << i*j << std::endl;
-			check_if_palindrome(i*j);	 
+			product_d = check_if_palindrome(i*j);   
+			if(product_d != 0){
+ 				std::cout << i << " " << j << ": ";
+				std::cout << product_d << std::endl; 
+			}		
 		}
 	}
 }
