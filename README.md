@@ -1,4 +1,4 @@
-# cpp_greatest_palindrome
+# CPP-Greatest-Palindrome-Finder
 Finds largest palindrome product of two numbers with n digits each
 
 Input: A number n
