@@ -9,7 +9,7 @@ Output:
 2) Time (ms) for program execution
   
 Example Input: 
-> 4
+4
 Example Output: 
 0001 0001 = 0001
 ...
